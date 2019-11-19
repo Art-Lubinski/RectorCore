@@ -1,0 +1,377 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+}
+@model RectorCore.Models.Node
+<div class="container-fluid ">
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewData["location"].ToString() == "NY" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="NY">NY</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewData["location"].ToString() == "TX" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="TX">TX</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "FL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="FL">FL</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CA" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CA">CA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "IL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="IL">IL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "OH" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="OH">OH</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AL">AL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "WA" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="WA">WA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AZ" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AZ">AZ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AUS" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AUS">AUS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CAN" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CAN">CAN</a>
+        </li>
+    </ul>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-header-text card-header-primary">
+                            <div class="card-text">
+                                <h5 class="card-title">Info</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Status:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        Available
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        OS:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        @Model.OS.ToString()
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row text-sm-left">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        External IP:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        @Model.LocalAddress1
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Internal IP:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        @Model.LocalAddress2
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Uptime (last day):
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        90%
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Uptime (last week):
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small text-center">
+                                        76%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-header-text card-header-primary">
+                            <div class="card-text">
+                                <h5 class="card-title">Account</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Type:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        DSL
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Provider:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        Verizon
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row text-sm-left">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Plan:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        Unlimited
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Usage:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        5 GB
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Speed:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        3 Mb/s
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row text-sm-left">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Status:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        Active
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row text-sm-left">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Account #:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        1333333333
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Phone #:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        9177676186
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Login:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small">
+                                        worldintercom
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Password:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small text-center">
+                                        W663300
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Web login:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small text-center">
+                                        worldintercom@ny.com
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span class="small">
+                                        Web password:
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="small text-center">
+                                        W663300w
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-2">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">add_to_queue</i> Add Line
+                    </button>
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">person_add</i> Add Customer
+                    </button>
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">data_usage</i> Data
+                    </button>
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">calendar_today</i> Tasks
+                    </button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-md-center small">Hardware</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="material-icons">router</i>
+                        </div>
+                        <div class="col-6 text-left small">
+                            Franklin r850
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="material-icons">speed</i>
+                        </div>
+                        <div class="col-6 text-left small">
+                            3.5 Mbs
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="material-icons">memory</i>
+                        </div>
+                        <div class="col-6 text-left small">
+                            7.9 GB
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="material-icons">storage</i>
+                        </div>
+                        <div class="col-6 text-left small">
+                            120 GB SSD
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="material-icons">usb</i>
+                        </div>
+                        <div class="col-6 text-left small">
+                            USB Dongle
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="material-icons">extension</i>
+                        </div>
+                        <div class="col-6 text-left small">
+                            Relay
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
