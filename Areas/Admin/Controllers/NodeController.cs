@@ -28,20 +28,23 @@ namespace RectorCore.Areas.Admin.Controllers
             nodeObj.ServiceInternet = uw.ServiceInternet;
             nodeObj.MainInternet = uw.MainInternet;
             nodeObj.DatesUptime = uw.Dates;
-            DailyUsage du = DB.DataUsage("6");
+            DailyUsage du = DB.DataUsage(nodeObj.PhoneNumberID.ToString());
             nodeObj.DatesUsage = du.Dates;
             nodeObj.Usage = du.Usage;
             return View(nodeObj);
         }
 
-        //public IActionResult Edit(string node)
-        //{
-        //    ViewData["sidebar"] = "serverlist";
-        //    ViewData["sidebar"] = "accounts";
-        //    ViewData["WhereAmI"] = "Accounts";
-        //    Node editNode = DB.GetNode(node);
+        [Route("/node/{location}/{node}/Edit")]
+        public IActionResult Edit(string location, string node)
+        {
+            ViewData["sidebar"] = "serverlist";
+            ViewData["sidebar"] = "accounts";
+            ViewData["WhereAmI"] = "Accounts";
+            ViewData["location"] = location;
+            Node editNode = DB.GetNode(node);
 
-        //    return View("Edit", editNode);
-        //}
+
+            return View("Edit", editNode);
+        }
     }
 }

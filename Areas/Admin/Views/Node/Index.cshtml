@@ -195,9 +195,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 right">
-                            <button class="btn btn-primary btn-sm">
+                            <a class="btn btn-primary btn-sm" asp-area="admin" asp-controller="node" asp-action="Edit" asp-route-location="@Html.ViewData["location"]" asp-route-node="@Model.Name">
                                 <i class="material-icons text-white">edit</i>
-                            </button>
+                            </a>
                             <button class="btn btn-primary  btn-sm">
                                 <i class="material-icons text-white">person_add</i>
                             </button>

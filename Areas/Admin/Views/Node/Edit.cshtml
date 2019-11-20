@@ -5,184 +5,104 @@
 }
 @model RectorCore.Models.Node
 <div class="container-fluid ">
-<ul class="nav nav-pills justify-content-center">
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewData["location"].ToString() == "NY" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="NY">NY</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewData["location"].ToString() == "TX" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="TX">TX</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "FL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="FL">FL</a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CA" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CA">CA</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "IL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="IL">IL</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "OH" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="OH">OH</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AL">AL</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "WA" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="WA">WA</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AZ" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AZ">AZ</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AUS" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AUS">AUS</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CAN" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CAN">CAN</a>
-    </li>
-</ul>
-<div class="row">
-<div class="col-md-10">
-<div class="row ">
-    <div class="col-6">
-        <div class="row">
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h5 class="card-title text-gray">Info</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-group bmd-form-group">
-                                            <label class="bmd-label-floating">Status</label>
-                                            <input class="form-control" type="text" readonly value="Active">
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewData["location"].ToString() == "NY" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="NY">NY</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewData["location"].ToString() == "TX" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="TX">TX</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "FL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="FL">FL</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CA" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CA">CA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "IL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="IL">IL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "OH" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="OH">OH</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AL" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AL">AL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "WA" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="WA">WA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AZ" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AZ">AZ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "AUS" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="AUS">AUS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CAN" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CAN">CAN</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="row ">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="form-group bmd-form-group">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Status</label>
+                                                    <select class="form-control" data-style="btn btn-link" id="exampleFormControlSelect1">
+                                                        <option>Active</option>
+                                                        <option>Broken</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Phone Number</label>
+                                                    <select class="form-control" data-style="btn btn-link" id="exampleFormControlSelect1">
+                                                        <option>9177676186</option>
+                                                        <option>3232322211</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Network Login</label>
+                                                    <input class="form-control" type="text" value="wdjfujeie">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Password</label>
+                                                    <input class="form-control" type="text" value="was123">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </form>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+
                     </div>
+
                 </div>
-                @if (Model.TVID != "")
-                {
+                <div class="col-6">
                     <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title text-md-center text-gray">Team Viewer</h5>
+                        <div class="card-body">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Team-Viewer pwd</label>
+                                <input class="form-control" type="text" value="wdjfujeie">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">AnyDesk pwd</label>
+                                <input class="form-control" type="text" value="was123">
+                            </div>
 
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzAxODdmOCI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
-                                </div>
-                                <div class="col-md-8 text-left">
-                                    <span class="small">
-                                        @Model.TVID
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <span class="small">
-                                        <i class="material-icons">lock</i>
-                                    </span>
-                                </div>
-                                <div class="col-md-8 text-left">
-                                    <span class="small">
-                                        12312412345
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-                @if (Model.AnydeskID != "")
-                {
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title text-md-center text-gray">AnyDesk</h5>
-
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <img src="https://img.icons8.com/color/24/000000/anydesk.png">
-                                </div>
-                                <div class="col-md-8 text-left">
-                                    <span class="small">
-                                        @Model.AnydeskID
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <span class="small">
-                                        <i class="material-icons">lock</i>
-                                    </span>
-                                </div>
-                                <div class="col-md-8 text-left">
-                                    <span class="small">
-                                        12312412345
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h5 class="card-title text-gray">Account</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Type</label>
-                                        <input class="form-control" type="text" readonly value="DSL">
-                                    </div>
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Provider</label>
-                                        <input class="form-control" type="text" readonly value="Verizon">
-                                    </div>
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Plan</label>
-                                        <input class="form-control" type="text" readonly value="Shared">
-                                    </div>
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Account number</label>
-                                        <input class="form-control" type="text" readonly value="12356745">
-                                    </div>
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Mobile number</label>
-                                        <input class="form-control" type="text" readonly value="9177676186">
-                                    </div>
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Network Login</label>
-                                        <input class="form-control" type="text" readonly value="wdjfujeie">
-                                    </div>
-                                    <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-floating">Password</label>
-                                        <input class="form-control" type="text" readonly value="was123">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-<div class="col-md-2">
-    <div class="card">
+        <div class="col-md-2">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 right">
@@ -204,6 +124,6 @@
                     </div>
                 </div>
             </div>
-</div>
-</div>
+        </div>
+    </div>
 </div>

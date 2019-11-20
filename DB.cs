@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using RectorCore.Models;
+using RectorCore.ViewModels;
 using RectorLocal;
 
 namespace RectorCore
@@ -34,24 +35,29 @@ namespace RectorCore
                             {
                                 nodeObj.TVID = DBUtills.SafeGetString(reader, 5);
                             }
+
                             nodeObj.TVPassword = DBUtills.SafeGetString(reader, 6);
                             if (!reader.IsDBNull(7))
                             {
                                 nodeObj.Is64bit = reader.GetBoolean(7);
                             }
+
                             nodeObj.OS = DBUtills.SafeGetString(reader, 8);
                             if (!reader.IsDBNull(9))
                             {
                                 nodeObj.RAM = reader.GetDouble(9);
                             }
+
                             if (!reader.IsDBNull(10))
                             {
                                 nodeObj.Storage = reader.GetDouble(10);
                             }
+
                             if (!reader.IsDBNull(11))
                             {
                                 nodeObj.MemoryStick = reader.GetBoolean(11);
                             }
+
                             nodeObj.LocalAddress1 = DBUtills.SafeGetString(reader, 12);
                             nodeObj.LocalAddress2 = DBUtills.SafeGetString(reader, 13);
                             nodeObj.Service = DBUtills.SafeGetString(reader, 14);
@@ -60,15 +66,18 @@ namespace RectorCore
                             {
                                 nodeObj.NodeNumber = reader.GetInt32(16);
                             }
+
                             if (!reader.IsDBNull(17))
                             {
                                 nodeObj.PhoneNumberID = reader.GetInt32(17);
                             }
+
                             nodeObj.Model = DBUtills.SafeGetString(reader, 18);
                             if (!reader.IsDBNull(19))
                             {
                                 nodeObj.IsSSD = reader.GetBoolean(19);
                             }
+
                             nodeObj.Modem = DBUtills.SafeGetString(reader, 20);
                             if (!reader.IsDBNull(21))
                             {
@@ -83,6 +92,30 @@ namespace RectorCore
                 return nodeObj;
             }
         }
+
+        public static NodeInfoEditViewModel GetNodeEdit(string node)
+        {
+            NodeInfoEditViewModel nodeObj = new NodeInfoEditViewModel();
+            using (SqlConnection connection = new SqlConnection(Config.connection_string))
+            {
+
+                connection.Open();
+                using (SqlCommand command =
+                    new SqlCommand($"SELECT * FROM Nodes WHERE Name='{node}'", connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                        }
+                    }
+                }
+            }
+
+            return nodeObj;
+        }
+    
 
         public static UptimeWeek GetUptime(string nodeName)
         {
