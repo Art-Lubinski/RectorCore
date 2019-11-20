@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Mobile Numbers List</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Node
+                                    </th>
+                                    <th>
+                                        Provider
+                                    </th>
+                                    <th>
+                                        Plan
+                                    </th>
+                                    <th>
+                                        Mobile Number
+                                    </th>
+                                    <th>
+                                        Account
+                                    </th>
+                                    <th>
+                                        Usage Limit
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @model List<RectorCore.Models.MobileNumber>
+                                @{
+                                    foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <span>@x.nodeName</span>
+                                            </td>
+                                            <td>
+                                                <span>@x.provider</span>
+                                            </td>
+                                            <td>
+                                                <span>@x.plan</span>
+                                            </td>
+                                            <td>
+                                                <span>@x.number</span>
+                                            </td>
+                                            <td>
+                                                <span>@x.accountNumber</span>
+                                            </td>
+
+                                            <td>
+                                                <a  asp-area="admin" asp-controller="MobileNumbers" asp-action="Edit" asp-route-provider="@x.provider" asp-route-plan="@x.plan" asp-route-account="@x.accountNumber" asp-route-number="@x.number">
+                                                    <i class="material-icons">
+                                                        edit
+                                                    </i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">add_to_queue</i> Add Line
+                    </button>
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">person_add</i> Add Customer
+                    </button>
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">data_usage</i> Data
+                    </button>
+                    <button class="btn btn-primary btn-block btn-sm">
+                        <i class="material-icons text-white">calendar_today</i> Tasks
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

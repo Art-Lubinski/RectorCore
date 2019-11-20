@@ -32,6 +32,7 @@
     <link href="~/assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="~/assets/demo/demo.css" rel="stylesheet" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body class="">
@@ -62,7 +63,7 @@
                         </a>
                     </li>
                     <li class="nav-item @(ViewContext.ViewData["sidebar"].ToString() == "accounts" ? "active" : "")">
-                        <a class="nav-link " href="./typography.html">
+                        <a class="nav-link " asp-area="admin" asp-controller="MobileNumbers" asp-action="index">
                             <i class="material-icons">account_balance</i>
                             <p>Accounts</p>
                         </a>
@@ -77,12 +78,6 @@
                         <a class="nav-link" href="./icons.html">
                             <i class="material-icons">router</i>
                             <p>Network</p>
-                        </a>
-                    </li>
-                    <li class="nav-item active-pro ">
-                        <a class="nav-link" href="./upgrade.html">
-                            <i class="material-icons">unarchive</i>
-                            <p>Upgrade to PRO</p>
                         </a>
                     </li>
                 </ul>

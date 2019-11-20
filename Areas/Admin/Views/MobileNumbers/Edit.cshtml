@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@model RectorCore.ViewModels.MobileNumbersEditViewModel
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Edit Mobile Number</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group bmd-form-group">
+                                    <label class="bmd-label-floating">Mobile Number</label>
+                                    <input type="text" class="form-control" value="@Model.number">
+                                </div>
+                                <div class="form-group bmd-form-group">
+                                    <select class="form-control" data-style="btn btn-link">
+                                        @{
+                                            int i = 1;
+                                            foreach (var x in Model.providers)
+                                            {
+                                                if (x == Model.provider)
+                                                {
+
+                                                    <option value="i" selected>@x</option>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <option value="i">@x</option>
+
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group bmd-form-group">
+                                    <select class="form-control" data-style="btn btn-link">
+                                        @{if(@Model.plan =="unlimited")
+                                            {
+                                                <option value="1" selected>Unlimited</option>
+                                                <option value="2">Shared</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="1" selected>Shared</option>
+                                                <option value="2"></option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group bmd-form-group">
+                                    <select class="form-control" data-style="btn btn-link">
+                                        @{
+                                            i = 1;
+                                            foreach (var x in Model.accounts)
+                                            {
+                                                if (x == Model.accountNumber)
+                                                {
+                                                    <option value="i" selected>@x</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="i">@x</option>
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Update</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

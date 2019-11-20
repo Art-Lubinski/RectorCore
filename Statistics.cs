@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace RectorCore
 {
-    public class Class
+    public class Statistics
     {
-
     }
 }

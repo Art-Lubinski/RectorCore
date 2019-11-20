@@ -40,280 +40,177 @@
             <a class="nav-link @(ViewContext.ViewBag.Location.ToString() == "CAN" ? "active" : "")" asp-area="admin" asp-controller="nodes" asp-action="index" asp-route-location="CAN">CAN</a>
         </li>
     </ul>
-    
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="row ">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header card-header-text card-header-primary">
-                            <div class="card-text">
-                                <h5 class="card-title">Info</h5>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h5 class="card-title text-gray">Info</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="form-group bmd-form-group">
+                                                        <label class="bmd-label-floating">Status</label>
+                                                        <input class="form-control" type="text" readonly value="Active">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
                             </div>
+                            @if (Model.TVID != "")
+                            {
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title text-md-center text-gray">Team Viewer</h5>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzAxODdmOCI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
+                                            </div>
+                                            <div class="col-md-8 text-left">
+                                                <span class="small">
+                                                    @Model.TVID
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <span class="small">
+                                                    <i class="material-icons">lock</i>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-8 text-left">
+                                                <span class="small">
+                                                    12312412345
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.AnydeskID != "")
+                            {
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title text-md-center text-gray">AnyDesk</h5>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img src="https://img.icons8.com/color/24/000000/anydesk.png">
+                                            </div>
+                                            <div class="col-md-8 text-left">
+                                                <span class="small">
+                                                    @Model.AnydeskID
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <span class="small">
+                                                    <i class="material-icons">lock</i>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-8 text-left">
+                                                <span class="small">
+                                                    12312412345
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Status:
-                                    </span>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h5 class="card-title text-gray">Account</h5>
                                 </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        Available
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        OS:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        @Model.OS.ToString()
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row text-sm-left">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        External IP:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        @Model.LocalAddress1
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Internal IP:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        @Model.LocalAddress2
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Uptime (last day):
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        90%
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Uptime (last week):
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small text-center">
-                                        76%
-                                    </span>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Type</label>
+                                                    <input class="form-control" type="text" readonly value="DSL">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Provider</label>
+                                                    <input class="form-control" type="text" readonly value="Verizon">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Plan</label>
+                                                    <input class="form-control" type="text" readonly value="Shared">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Account number</label>
+                                                    <input class="form-control" type="text" readonly value="12356745">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Mobile number</label>
+                                                    <input class="form-control" type="text" readonly value="9177676186">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Network Login</label>
+                                                    <input class="form-control" type="text" readonly value="wdjfujeie">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Password</label>
+                                                    <input class="form-control" type="text" readonly value="was123">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6">
                     <div class="card">
-                        <div class="card-header card-header-text card-header-primary">
-                            <div class="card-text">
-                                <h5 class="card-title">Account</h5>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Type:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        DSL
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Provider:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        Verizon
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row text-sm-left">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Plan:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        Unlimited
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Usage:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        5 GB
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Speed:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        3 Mb/s
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row text-sm-left">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Status:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        Active
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row text-sm-left">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Account #:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        1333333333
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Phone #:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        9177676186
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Login:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small">
-                                        worldintercom
-                                    </span>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Password:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small text-center">
-                                        W663300
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Web login:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small text-center">
-                                        worldintercom@ny.com
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <span class="small">
-                                        Web password:
-                                    </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <span class="small text-center">
-                                        W663300w
-                                    </span>
-                                </div>
-
-                            </div>
+                        <div class="body">
+                            <div id="UsageChart" style="width: 100%; height: 300px;"></div>
+                            <div id="UptimeChart" style="width: 100%; height: 300px;"></div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
-    <div class="col-md-2">
-        <div class="row">
+        <div class="col-md-2">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-primary btn-block btn-sm">
-                        <i class="material-icons text-white">add_to_queue</i> Add Line
-                    </button>
-                    <button class="btn btn-primary btn-block btn-sm">
-                        <i class="material-icons text-white">person_add</i> Add Customer
-                    </button>
-                    <button class="btn btn-primary btn-block btn-sm">
-                        <i class="material-icons text-white">data_usage</i> Data
-                    </button>
-                    <button class="btn btn-primary btn-block btn-sm">
-                        <i class="material-icons text-white">calendar_today</i> Tasks
-                    </button>
+                    <div class="row">
+                        <div class="col-6 right">
+                            <button class="btn btn-primary btn-sm">
+                                <i class="material-icons text-white">edit</i>
+                            </button>
+                            <button class="btn btn-primary  btn-sm">
+                                <i class="material-icons text-white">person_add</i>
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-primary  btn-sm">
+                                <i class="material-icons text-white">data_usage</i>
+                            </button>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="material-icons text-white">calendar_today</i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -322,56 +219,141 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-right">
                             <i class="material-icons">router</i>
                         </div>
-                        <div class="col-6 text-left small">
-                            Franklin r850
+                        <div class="col-9 text-left small">
+                            @Model.Modem
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <i class="material-icons">speed</i>
                         </div>
-                        <div class="col-6 text-left small">
+                        <div class="col-9 text-left small">
                             3.5 Mbs
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <i class="material-icons">memory</i>
                         </div>
-                        <div class="col-6 text-left small">
-                            7.9 GB
+                        <div class="col-9 text-left small">
+                            @Model.RAM GB
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <i class="material-icons">storage</i>
                         </div>
-                        <div class="col-6 text-left small">
-                            120 GB SSD
+                        <div class="col-9 text-left small">
+                            @if (Model.IsSSD)
+                            {
+                                <span>@Model.Storage SSD</span>
+                            }
+                            else
+                            {
+                                <span>@Model.Storage HDD</span>
+                            }
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4 text-center">
-                            <i class="material-icons">usb</i>
+                    @if (Model.MemoryStick)
+                    {
+                        <div class="row">
+                            <div class="col-3 text-center">
+                                <i class="material-icons">usb</i>
+                            </div>
+                            <div class="col-9 text-left small">
+                                USB Dongle
+                            </div>
                         </div>
-                        <div class="col-6 text-left small">
-                            USB Dongle
+                    }
+                    @if (Model.NetworkAdapter)
+                    {
+                        <div class="row">
+                            <div class="col-3 text-center">
+                                <i class="material-icons">extension</i>
+                            </div>
+                            <div class="col-9 text-left small">
+                                Relay
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-center">
-                            <i class="material-icons">extension</i>
-                        </div>
-                        <div class="col-6 text-left small">
-                            Relay
-                        </div>
-                    </div>
+                    }
+
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var myChart = Highcharts.chart('UsageChart', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Data Usage'
+            },
+            xAxis: {
+                categories: @Html.Raw(Json.Serialize(Model.DatesUsage))
+            },
+            yAxis: {
+                title: {
+                    text: 'Data Used (GB)'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            series: [{
+                name: 'Provider',
+                data: @Html.Raw(Json.Serialize(Model.Usage))
+            }]
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var myChart = Highcharts.chart('UptimeChart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Uptime'
+            },
+            xAxis: {
+                categories: @Html.Raw(Json.Serialize(Model.DatesUptime))
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Total Uptime'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Service Internet',
+                data: @Html.Raw(Json.Serialize(Model.ServiceInternet))
+            }, {
+                name: 'Offline',
+                data: @Html.Raw(Json.Serialize(Model.DownTime))
+            }, {
+                name: 'Main Internet',
+                data: @Html.Raw(Json.Serialize(Model.MainInternet))
+            }]
+        });
+    });
+</script>
