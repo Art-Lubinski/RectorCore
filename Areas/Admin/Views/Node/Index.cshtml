@@ -3,7 +3,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
 }
-@model RectorCore.Models.Node
+@model RectorCore.ViewModels.NodeInfoViewModel
 <div class="container-fluid ">
     <ul class="nav nav-pills justify-content-center">
         <li class="nav-item">
@@ -47,8 +47,8 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="card">
-                                <div class="card-header text-center">
-                                    <h5 class="card-title text-gray">Info</h5>
+                                <div class="card-header text-right text-gray">
+                                    <p>Status</p>
                                 </div>
                                 <div class="card-body">
                                     <form>
@@ -66,77 +66,84 @@
                                     </form>
                                 </div>
                             </div>
-                            @if (Model.TVID != "")
-                            {
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title text-md-center text-gray">Team Viewer</h5>
 
+                            <div class="card">
+                                <div class="card-header card-header-icon ">
+                                    <div class="card-icon">
+                                        <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzAxODdmOCI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
+                                        <img src="https://img.icons8.com/color/24/000000/anydesk.png">
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzAxODdmOCI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
-                                            </div>
-                                            <div class="col-md-8 text-left">
-                                                <span class="small">
-                                                    @Model.TVID
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <span class="small">
-                                                    <i class="material-icons">lock</i>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 text-left">
-                                                <span class="small">
-                                                    12312412345
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <p>Remote Access</p>
                                 </div>
-                            }
-                            @if (Model.AnydeskID != "")
-                            {
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title text-md-center text-gray">AnyDesk</h5>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                @if (Model.TVID != "")
+                                                {
+                                                    <div class="form-group">
+                                                        <div class="form-group bmd-form-group">
+                                                            <div class="input-group">
+                                                                <label class="bmd-label-floating">Team-Viewer ID</label>
+                                                                <input class="form-control" type="text" id="AnyDeskInput1" readonly value="@Model.TVID">
+                                                                <span>
+                                                                    <button onclick="copy('AnyDeskInput1')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                        <i class="material-icons">file_copy</i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group bmd-form-group">
+                                                            <div class="input-group">
+                                                                <label class="bmd-label-floating">Password</label>
+                                                                <input class="form-control" type="text" id="AnyDeskInput2" readonly value="123456">
+                                                                <span>
+                                                                    <button onclick="copy('AnyDeskInput2')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                        <i class="material-icons">file_copy</i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>}
+                                                @if (Model.AnydeskID != "")
+                                                {
+                                                    <div class="form-group">
+                                                        <div class="form-group bmd-form-group">
+                                                            <div class="input-group">
+                                                                <label class="bmd-label-floating">AnyDesk ID</label>
+                                                                <input class="form-control" type="text" id="AnyDeskInput1" readonly value="@Model.AnydeskID">
+                                                                <span>
+                                                                    <button onclick="copy('AnyDeskInput1')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                        <i class="material-icons">file_copy</i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group bmd-form-group">
+                                                            <div class="input-group">
+                                                                <label class="bmd-label-floating">Password</label>
+                                                                <input class="form-control" type="text" id="AnyDeskInput2" readonly value="123456">
+                                                                <span>
+                                                                    <button onclick="copy('AnyDeskInput2')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                        <i class="material-icons">file_copy</i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
 
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img src="https://img.icons8.com/color/24/000000/anydesk.png">
-                                            </div>
-                                            <div class="col-md-8 text-left">
-                                                <span class="small">
-                                                    @Model.AnydeskID
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <span class="small">
-                                                    <i class="material-icons">lock</i>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 text-left">
-                                                <span class="small">
-                                                    12312412345
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
                         </div>
                         <div class="col-6">
                             <div class="card">
-                                <div class="card-header text-center">
-                                    <h5 class="card-title text-gray">Account</h5>
+                                <div class="card-header text-right text-gray">
+                                    <p>Account</p>
                                 </div>
                                 <div class="card-body">
                                     <form>
@@ -144,7 +151,7 @@
                                             <div class="col-12">
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Type</label>
-                                                    <input class="form-control" type="text" readonly value="DSL">
+                                                    <input class="form-control"  type="text" readonly value="DSL">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Provider</label>
@@ -186,7 +193,7 @@
                             <div id="UptimeChart" style="width: 100%; height: 300px;"></div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -235,6 +242,21 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-3 text-right">
+                            <i class="material-icons">developer_board</i>
+                        </div>
+                        <div class="col-9 text-left small">
+                            @if (Model.Is64bit)
+                            {
+                                <span>x64 bit</span>
+                            }
+                            else
+                            {
+                                <span>x86 bit</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-3 text-center">
                             <i class="material-icons">memory</i>
                         </div>
@@ -275,13 +297,28 @@
                                 <i class="material-icons">extension</i>
                             </div>
                             <div class="col-9 text-left small">
-                                Relay
+                                ASIX
                             </div>
                         </div>
                     }
 
                 </div>
             </div>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            @if (TempData["Result"]!= null)
+            {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                @TempData["Result"].ToString()
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+        </div>
+            }
+            
         </div>
     </div>
 </div>
@@ -292,7 +329,10 @@
                 type: 'line'
             },
             title: {
-                text: 'Data Usage'
+                text: 'Data Usage',
+                style: {
+                    color: '#a4a7ab',
+                }
             },
             xAxis: {
                 categories: @Html.Raw(Json.Serialize(Model.DatesUsage))
@@ -324,7 +364,10 @@
                 type: 'column'
             },
             title: {
-                text: 'Uptime'
+                text: 'Uptime',
+                style: {
+                    color: '#a4a7ab',
+                }
             },
             xAxis: {
                 categories: @Html.Raw(Json.Serialize(Model.DatesUptime))
@@ -356,4 +399,17 @@
             }]
         });
     });
+</script>
+<script>
+    function copy(id) {
+        /* Get the text field */
+        var copyText = document.getElementById(id);
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
 </script>

@@ -17,12 +17,12 @@ namespace RectorCore.Areas.Admin.Controllers
     {
         [Route("")]
         [Route("/node/{location}/{node}")]
-        public IActionResult Index(string location, string node)
+        public IActionResult Index(string node, string location= "NY" )
         {
             ViewData["sidebar"] = "serverlist";
             ViewData["WhereAmI"] = node;
             ViewData["location"] = location;
-            Node nodeObj = DB.GetNode(node);
+            NodeInfoViewModel nodeObj = DB.GetNode(node);
             UptimeWeek uw = DB.GetUptime(node);
             nodeObj.DownTime = uw.DownTime;
             nodeObj.ServiceInternet = uw.ServiceInternet;
@@ -37,14 +37,33 @@ namespace RectorCore.Areas.Admin.Controllers
         [Route("/node/{location}/{node}/Edit")]
         public IActionResult Edit(string location, string node)
         {
+            Debug.WriteLine("IN Edit");
             ViewData["sidebar"] = "serverlist";
             ViewData["sidebar"] = "accounts";
             ViewData["WhereAmI"] = "Accounts";
             ViewData["location"] = location;
-            Node editNode = DB.GetNode(node);
-
+            NodeInfoEditViewModel editNode = DB.GetNodeEdit(node);
 
             return View("Edit", editNode);
+        }
+
+        [Route("/node/Edit")]
+        public IActionResult Save()
+        {
+            Debug.WriteLine("IN SAVE");
+            NodeInfoEditViewModel editNode = new NodeInfoEditViewModel();
+            editNode.Status = HttpContext.Request.Form["SelectStatus"].ToString();
+            
+            if (editNode.SaveNodeInfo() != 0)
+            {
+                TempData["Result"] = "Data saved Successfully";
+            }
+            else
+            {
+                TempData["Result"] = "Fail M&ZAF%KA!";
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

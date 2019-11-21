@@ -34,5 +34,7 @@ namespace RectorCore.ViewModels
         public List<string> DatesUptime { get; set; }
         public List<double> Usage { get; set; }
         public List<string> DatesUsage { get; set; }
+        public string NetworkLogin { get; set; }
+        public string NetworkPassword { get; set; }
     }
 }

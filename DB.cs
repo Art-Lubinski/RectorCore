@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -12,9 +13,10 @@ namespace RectorCore
 {
     public static class DB
     {
-        public static Node GetNode(string node)
+        public static NodeInfoViewModel GetNode(string node)
         {
-            Node nodeObj = new Node();
+            NodeInfoViewModel nodeObj = new NodeInfoViewModel();
+            
             using (SqlConnection connection = new SqlConnection(Config.connection_string))
             {
 
@@ -30,6 +32,8 @@ namespace RectorCore
                             nodeObj.Name = DBUtills.SafeGetString(reader, 1);
                             nodeObj.RectorVersion = DBUtills.SafeGetString(reader, 2);
                             nodeObj.AnydeskID = DBUtills.SafeGetString(reader, 3);
+                            nodeObj.NetworkLogin = reader.GetValue(reader.GetOrdinal("NetworkLogin")).ToString();
+                            nodeObj.NetworkPassword = reader.GetValue(reader.GetOrdinal("NetworkPassword")).ToString();
                             DBUtills.SafeGetString(reader, 4);
                             if (!reader.IsDBNull(5))
                             {
@@ -96,26 +100,49 @@ namespace RectorCore
         public static NodeInfoEditViewModel GetNodeEdit(string node)
         {
             NodeInfoEditViewModel nodeObj = new NodeInfoEditViewModel();
+            List<string> phonenumbers = new List<string>();
+            List<string> phoneids = new List<string>();
             using (SqlConnection connection = new SqlConnection(Config.connection_string))
             {
 
                 connection.Open();
                 using (SqlCommand command =
-                    new SqlCommand($"SELECT * FROM Nodes WHERE Name='{node}'", connection))
+                    new SqlCommand($"SELECT Number, Status, AnydeskPassword, TVPassword, NetworkLogin, NetworkPassword FROM Nodes LEFT JOIN MobileNumbers ON Nodes.PhoneNumberID = MobileNumbers.ID WHERE Nodes.Name = '{node}'", connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
+                            nodeObj.Name = node;
+                            nodeObj.Status = reader.GetValue(reader.GetOrdinal("Status")).ToString();
+                            nodeObj.AnydeskPassword = reader.GetValue(reader.GetOrdinal("AnydeskPassword")).ToString();
+                            nodeObj.TVPassword = reader.GetValue(reader.GetOrdinal("TVPassword")).ToString();
+                            nodeObj.PhoneNumber = reader.GetValue(reader.GetOrdinal("Number")).ToString();
+                            nodeObj.NetworkLogin = reader.GetValue(reader.GetOrdinal("NetworkLogin")).ToString();
+                            nodeObj.NetworkPassword = reader.GetValue(reader.GetOrdinal("NetworkPassword")).ToString();
                         }
                     }
+                    reader.Close();
+                    command.CommandText = "Select Number, ID FROM MobileNumbers";
+                    reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            phoneids.Add(reader.GetValue(reader.GetOrdinal("ID")).ToString());
+                            phonenumbers.Add(reader.GetValue(reader.GetOrdinal("Number")).ToString());
+                        }
+                    }
+                    reader.Close();
                 }
+
+                nodeObj.PhoneNumbersIDS = phoneids;
+                nodeObj.PhoneNumbers = phonenumbers;
             }
 
             return nodeObj;
         }
-    
 
         public static UptimeWeek GetUptime(string nodeName)
         {
@@ -145,9 +172,7 @@ namespace RectorCore
                             while (reader.Read())
                             {
                                 tmp = reader.GetInt32(0);
-                                //System.Diagnostics.Debug.WriteLine($"RESULT Tmp {tmp}");
                                 ServInternet = (tmp * 100 / 288);
-                                //System.Diagnostics.Debug.WriteLine($"RESULT ServInternet {ServInternet}");
                                 x.Add(ServInternet);
                             }
                         }
@@ -163,13 +188,11 @@ namespace RectorCore
                             {
                                 tmp = reader.GetInt32(0);
                                 MainInternet = (tmp * 100 / 288);
-                                //System.Diagnostics.Debug.WriteLine($"RESULT MainInternet {MainInternet}");
                                 y.Add(MainInternet);
                             }
                         }
                         reader.Close();
                     }
-                    //System.Diagnostics.Debug.WriteLine($"RESULT DATES {from} {to}");
                     date.Add(to.ToShortDateString());
                     from = from.AddDays(1);
                     to = to.AddDays(1);
@@ -182,10 +205,6 @@ namespace RectorCore
                 z.Add((100-nw.Serv - nw.Main));
             }
             UptimeWeek uw = new UptimeWeek();
-            foreach (var a in z)
-            {
-                //System.Diagnostics.Debug.WriteLine($"RESULT {a}");
-            }
             uw.ServiceInternet = x;
             uw.MainInternet = y;
             uw.DownTime = z;
@@ -216,12 +235,10 @@ namespace RectorCore
                             temp2 = reader.GetDateTime(1);
                             dailyUsage.Add(temp1);
                             date.Add(temp2.ToShortDateString());
-                            System.Diagnostics.Debug.WriteLine($"RESULT Temp {temp1} {temp2}");
                         }
                     }
                     reader.Close();
                 }
-                //System.Diagnostics.Debug.WriteLine($"RESULT DATES {from} {to}");
             }
             DailyUsage du = new DailyUsage();
             du.Dates = date;

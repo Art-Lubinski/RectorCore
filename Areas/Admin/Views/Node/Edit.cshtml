@@ -3,7 +3,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
 }
-@model RectorCore.Models.Node
+@model RectorCore.ViewModels.NodeInfoEditViewModel
 <div class="container-fluid ">
     <ul class="nav nav-pills justify-content-center">
         <li class="nav-item">
@@ -51,77 +51,63 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <div class="form-group bmd-form-group">
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Status</label>
-                                                    <select class="form-control" data-style="btn btn-link" id="exampleFormControlSelect1">
-                                                        <option>Active</option>
-                                                        <option>Broken</option>
+
+                                                <label for="SelectStatus">Status</label>
+                                               
+                                                    <select class="form-control" data-style="btn btn-link" id="SelectStatus"
+                                                            asp-for="Status"
+                                                            asp-items="new SelectList(Model.Status)">
+                                                        <option value="">Select Action</option>
                                                     </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Phone Number</label>
-                                                    <select class="form-control" data-style="btn btn-link" id="exampleFormControlSelect1">
-                                                        <option>9177676186</option>
-                                                        <option>3232322211</option>
+
+
+                                         
+                                                    <label for="SelectPhone">Phone Number</label>
+                                                    <select class="form-control" data-style="btn btn-link" id="SelectPhone">
+                                                        @{
+                                                            int i = 1;
+                                                            foreach (var x in Model.PhoneNumbers)
+                                                            {
+                                                                if (x == Model.PhoneNumber)
+                                                                {
+                                                                    <option value="i" selected>@x</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="i">@x</option>
+                                                                }
+                                                                i++;
+                                                            }
+                                                        }
                                                     </select>
-                                                </div>
+                                     
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Network Login</label>
-                                                    <input class="form-control" type="text" value="wdjfujeie">
+                                                    <input class="form-control" name="txtNetLogon" type="text" value="@Model.NetworkLogin">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Password</label>
-                                                    <input class="form-control" type="text" value="was123">
+                                                    <input class="form-control" name="txtNetPass" type="text" value="@Model.NetworkPassword">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Team-Viewer pwd</label>
+                                                    <input class="form-control" name="TVPWD" type="text" value="@Model.TVPassword">
+                                                </div>
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">AnyDesk pwd</label>
+                                                    <input class="form-control" name="ADPWD" type="text" value="@Model.AnydeskPassword">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <button type="submit" asp-area="admin" asp-controller="node" asp-action="save" class="btn btn-primary pull-right">Update</button>
                                 <div class="clearfix"></div>
                             </form>
                         </div>
 
                     </div>
 
-                </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Team-Viewer pwd</label>
-                                <input class="form-control" type="text" value="wdjfujeie">
-                            </div>
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">AnyDesk pwd</label>
-                                <input class="form-control" type="text" value="was123">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 right">
-                            <button class="btn btn-primary btn-sm">
-                                <i class="material-icons text-white">edit</i>
-                            </button>
-                            <button class="btn btn-primary  btn-sm">
-                                <i class="material-icons text-white">person_add</i>
-                            </button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-primary  btn-sm">
-                                <i class="material-icons text-white">data_usage</i>
-                            </button>
-                            <button class="btn btn-primary btn-sm">
-                                <i class="material-icons text-white">calendar_today</i>
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
