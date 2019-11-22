@@ -11,6 +11,7 @@ namespace RectorCore.ViewModels
     public class NodeInfoViewModel
     {
         public string Name { get; set; }
+        public string Status { get; set; }
         public string RectorVersion { get; set; }
         public string AnydeskID { get; set; }
         public string AnydeskPassword { get; set; }
@@ -56,8 +57,10 @@ namespace RectorCore.ViewModels
                         while (reader.Read())
                         {
                             Name = DBUtills.SafeGetString(reader, 1);
+                            Status = reader.GetValue(reader.GetOrdinal("Status")).ToString();
                             RectorVersion = DBUtills.SafeGetString(reader, 2);
                             AnydeskID = reader.GetValue(reader.GetOrdinal("AnydeskID")).ToString();
+                            AnydeskID = reader.GetValue(reader.GetOrdinal("AnydeskPassword")).ToString();
                             NetworkLogin = reader.GetValue(reader.GetOrdinal("NetworkLogin")).ToString();
                             NetworkPassword = reader.GetValue(reader.GetOrdinal("NetworkPassword")).ToString();
                             TVID = reader.GetValue(reader.GetOrdinal("TVID")).ToString();
@@ -73,7 +76,6 @@ namespace RectorCore.ViewModels
                             Hub = reader.GetValue(reader.GetOrdinal("Hub")).ToString();
                             NodeNumber = Int32.Parse(reader.GetValue(reader.GetOrdinal("NodeNumber")).ToString());
                             PhoneNumberID = reader.GetValue(reader.GetOrdinal("PhoneNumberID")).ToString();
-                            Debug.WriteLine(PhoneNumberID);
                             IsSSD = Boolean.Parse(reader.GetValue(reader.GetOrdinal("IsSSD")).ToString());
                             Modem =reader.GetValue(reader.GetOrdinal("Modem")).ToString();
                             NetworkAdapter = Boolean.Parse(reader.GetValue(reader.GetOrdinal("NetworkAdapter")).ToString());
@@ -190,13 +192,19 @@ namespace RectorCore.ViewModels
             }
             List<double> dailyUsageFinal = new List<double>();
 
-            if (dailyUsage.Capacity != 0)
+            if (dailyUsage.Count > 1)
             {
-                totalUsed = Math.Round(dailyUsage[dailyUsage.Capacity - 1], 2);
+                totalUsed = Math.Round(dailyUsage[dailyUsage.Count - 1], 2);
                 int i;
-                for (i = 0; i < dailyUsage.Capacity - 1; i++)
+                double result;
+                for (i = 0; i < dailyUsage.Count - 1; i++)
                 {
-                    dailyUsageFinal.Add(Math.Round((dailyUsage[i + 1] - dailyUsage[i]), 2));
+                    result = Math.Round(dailyUsage[i + 1] - dailyUsage[i], 2);
+                    if (result < 0)
+                    {
+                        result = dailyUsage[i + 1];
+                    } 
+                    dailyUsageFinal.Add(result);
 
                 }
 

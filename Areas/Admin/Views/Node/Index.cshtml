@@ -45,78 +45,83 @@
             <div class="row ">
                 <div class="col-6">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="card">
-                                <div class="card-header text-gray">
-                                    <p class="text-right">Remote Access</p>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                @if (Model.TVID != "")
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="form-group bmd-form-group">
-                                                            <div class="input-group">
-                                                                <label class="bmd-label-floating"><img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIiIGhlaWdodD0iMTIiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM0OThkYiI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
-                                                                    Team-Viewer ID
-                                                                </label>
-                                                                <input class="form-control" type="text" id="TVInput1" readonly value="@Model.TVID">
-                                                                <span>
-                                                                    <i onclick="copy('TVInput1')" class="btn btn-fab btn-fab-mini btn-round">
-                                                                        <i class="material-icons">file_copy</i>
-                                                                    </i>
-                                                                </span>
+                        @if (@Model.TVID != "" && @Model.AnydeskID != "")
+                        {
+                            <div class="col-6">
+                                <div class="card">
+                                    <div class="card-header text-gray">
+                                        <p class="text-right">Remote Access</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    @if (Model.TVID != "")
+                                                    {
+                                                        <div class="form-group">
+                                                            <div class="form-group bmd-form-group">
+                                                                <div class="input-group">
+                                                                    <label class="bmd-label-floating">
+                                                                        <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIiIGhlaWdodD0iMTIiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM0OThkYiI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
+                                                                        Team-Viewer ID
+                                                                    </label>
+                                                                    <input class="form-control" type="text" id="TVInput1" readonly value="@Model.TVID">
+                                                                    <span>
+                                                                        <i onclick="copy('TVInput1')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                            <i class="material-icons">file_copy</i>
+                                                                        </i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group bmd-form-group">
+                                                                <div class="input-group">
+                                                                    <label class="bmd-label-floating">Password</label>
+                                                                    <input class="form-control" type="text" id="TVInput2" readonly value="@Model.TVPassword">
+                                                                    <span>
+                                                                        <i onclick="copy('TVInput2')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                            <i class="material-icons">file_copy</i>
+                                                                        </i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>}
+                                                    @if (Model.AnydeskID != "")
+                                                    {
+                                                        <div class="form-group">
+                                                            <div class="form-group bmd-form-group">
+                                                                <div class="input-group">
+                                                                    <label class="bmd-label-floating"> <img src="https://img.icons8.com/color/12/000000/anydesk.png"> AnyDesk ID</label>
+                                                                    <input class="form-control" type="text" id="AnyDeskInput1" readonly value="@Model.AnydeskID">
+                                                                    <span>
+                                                                        <i onclick="copy('AnyDeskInput1')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                            <i class="material-icons">file_copy</i>
+                                                                        </i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group bmd-form-group">
+                                                                <div class="input-group">
+                                                                    <label class="bmd-label-floating">Password</label>
+                                                                    <input class="form-control" type="text" id="AnyDeskInput2" readonly value="@Model.AnydeskPassword">
+                                                                    <span>
+                                                                        <i onclick="copy('AnyDeskInput2')" class="btn btn-fab btn-fab-mini btn-round">
+                                                                            <i class="material-icons">file_copy</i>
+                                                                        </i>
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group bmd-form-group">
-                                                            <div class="input-group">
-                                                                <label class="bmd-label-floating">Password</label>
-                                                                <input class="form-control" type="text" id="TVInput2" readonly value="123456">
-                                                                <span>
-                                                                    <i onclick="copy('TVInput2')" class="btn btn-fab btn-fab-mini btn-round">
-                                                                        <i class="material-icons">file_copy</i>
-                                                                    </i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>}
-                                                @if (Model.AnydeskID != "")
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="form-group bmd-form-group">
-                                                            <div class="input-group">
-                                                                <label class="bmd-label-floating"> <img src="https://img.icons8.com/color/12/000000/anydesk.png"> AnyDesk ID</label>
-                                                                <input class="form-control" type="text" id="AnyDeskInput1" readonly value="@Model.AnydeskID">
-                                                                <span>
-                                                                    <i onclick="copy('AnyDeskInput1')" class="btn btn-fab btn-fab-mini btn-round">
-                                                                        <i class="material-icons">file_copy</i>
-                                                                    </i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group bmd-form-group">
-                                                            <div class="input-group">
-                                                                <label class="bmd-label-floating">Password</label>
-                                                                <input class="form-control" type="text" id="AnyDeskInput2" readonly value="123456">
-                                                                <span>
-                                                                    <i onclick="copy('AnyDeskInput2')" class="btn btn-fab btn-fab-mini btn-round">
-                                                                        <i class="material-icons">file_copy</i>
-                                                                    </i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
+                                                    }
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </form>
+                                            <div class="clearfix"></div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
+                            </div>
+                        }
+
                         <div class="col-6">
                             <div class="card">
                                 <div class="card-header text-right text-gray">
@@ -144,11 +149,11 @@
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Network Login</label>
-                                                    <input class="form-control" type="text" readonly value="wdjfujeie">
+                                                    <input class="form-control" type="text" readonly value="@Model.NetworkLogin">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Password</label>
-                                                    <input class="form-control" type="text" readonly value="was123">
+                                                    <input class="form-control" type="text" readonly value="@Model.NetworkPassword">
                                                 </div>
                                             </div>
                                         </div>
@@ -277,19 +282,17 @@
 
                 </div>
             </div>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="false">&times;</span>
-                </button>
-            </div>
+
+            
+
             @if (TempData["Result"]!= null)
             {
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                @TempData["Result"].ToString()
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="false">&times;</span>
-            </button>
-        </div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <span>@TempData["Result"].ToString()</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
             }
             
         </div>
@@ -335,7 +338,7 @@
                 {
                     name: 'Provider',
                     data: @Html.Raw(Json.Serialize(Model.Usage))
-            }]
+                }]
         });
     });
 </script>
@@ -402,4 +405,14 @@
         /* Copy the text inside the text field */
         document.execCommand("copy");
     }
+</script>
+<script>
+    $(document).ready(function() {
+        $("#success-alert").hide();
+        $("#myWish").click(function showAlert() {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#success-alert").slideUp(500);
+            });
+        });
+    });
 </script>
