@@ -44,7 +44,7 @@
                                     {
                                         <tr>
                                             <td>
-                                                <span>@x.nodeName</span>
+                                                <a asp-area="admin" asp-controller="node" asp-action="index" asp-route-node="@x.nodeName">@x.nodeName</a>
                                             </td>
                                             <td>
                                                 <span>@x.provider</span>

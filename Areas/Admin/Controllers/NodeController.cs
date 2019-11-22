@@ -12,25 +12,18 @@ using RectorLocal;
 namespace RectorCore.Areas.Admin.Controllers
 {
     [Area("admin")]
-    [Route("admin/node/{location}/{node}")]
+    [Route("admin/node/{node}")]
     public class NodeController : Controller
     {
         [Route("")]
-        [Route("/node/{location}/{node}")]
-        public IActionResult Index(string node, string location= "NY" )
+        [Route("/node/{node}")]
+        public IActionResult Index(string node, string location= "NY")
         {
             ViewData["sidebar"] = "serverlist";
             ViewData["WhereAmI"] = node;
             ViewData["location"] = location;
-            NodeInfoViewModel nodeObj = DB.GetNode(node);
-            UptimeWeek uw = DB.GetUptime(node);
-            nodeObj.DownTime = uw.DownTime;
-            nodeObj.ServiceInternet = uw.ServiceInternet;
-            nodeObj.MainInternet = uw.MainInternet;
-            nodeObj.DatesUptime = uw.Dates;
-            DailyUsage du = DB.DataUsage(nodeObj.PhoneNumberID.ToString());
-            nodeObj.DatesUsage = du.Dates;
-            nodeObj.Usage = du.Usage;
+            NodeInfoViewModel nodeObj = new NodeInfoViewModel();
+            nodeObj.SelectFromDb(node);
             return View(nodeObj);
         }
 

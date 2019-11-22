@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using RectorCore.Models;
+using RectorLocal;
 
 namespace RectorCore.ViewModels
 {
@@ -17,5 +19,6 @@ namespace RectorCore.ViewModels
         public string nodeName { get; set; }
         public List<string> accounts { get; set; }
         public List<string> providers { get; set; }
+
     }
 }

@@ -28,7 +28,7 @@ namespace RectorCore.Areas.Admin.Controllers
             {
                 connection.Open();
                 using (SqlCommand command =
-                    new SqlCommand("SELECT Name FROM Nodes WHERE Hub='NY222' OR Hub='NY22' OR Hub='NY2'", connection))
+                    new SqlCommand("SELECT Name FROM Nodes WHERE Hub='NY222' OR Hub='NY22' OR Hub='NY2' ORDER BY Name", connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
                     string[] lines = new string[]{};
