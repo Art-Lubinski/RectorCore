@@ -2,7 +2,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
+@model RectorCore.ViewModels.NodesViewModel
 <div class="container-fluid ">
     <ul class="nav nav-pills justify-content-center">
         <li class="nav-item">
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class=" text-primary">
+                            <thead class="text-primary">
                                 <tr>
                                     <th>
                                         Line
@@ -71,25 +71,81 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @model List<RectorCore.Models.Node>
                                 @{
-                                    foreach (var x in Model)
+                                    foreach (var x in Model.NodeCustomerViewMobile)
                                     {
                                         <tr>
                                             <td>
-                                             <a asp-area="admin" asp-controller="node" asp-action="index" asp-route-node="@x.Name" asp-route-location="@ViewContext.ViewData["location"].ToString()">@x.Name</a>
+                                                <a asp-area="admin" asp-controller="node" asp-action="index" asp-route-node="@x.Name" asp-route-location="@ViewContext.ViewData["location"].ToString()">@x.Name</a>
                                             </td>
                                             <td>
-                                                Dakota Rice
+                                                @x.Provider
                                             </td>
                                             <td>
-                                                Niger
+                                                Placeholder
                                             </td>
                                             <td>
-                                                Oud-Turnhout
+                                                Placeholder
                                             </td>
-                                            <td class="text-primary">
-                                                $36,738
+                                            <td>
+                                                Placeholder
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">DSL</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th>
+                                        Line
+                                    </th>
+                                    <th>
+                                        Provider
+                                    </th>
+                                    <th>
+                                        Customer
+                                    </th>
+                                    <th>
+                                        Plan
+                                    </th>
+                                    <th>
+                                        Usage
+                                    </th>
+                                    <th>
+                                        Uptime
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var x in Model.NodeCustomerViewDSL)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a asp-area="admin" asp-controller="node" asp-action="index" asp-route-node="@x.Name" asp-route-location="@ViewContext.ViewData["location"].ToString()">@x.Name</a>
+                                            </td>
+                                            <td>
+                                                @x.Provider
+                                            </td>
+                                            <td>
+                                                Placeholder
+                                            </td>
+                                            <td>
+                                                Placeholder
+                                            </td>
+                                            <td>
+                                                Placeholder
                                             </td>
                                         </tr>
                                     }
@@ -148,144 +204,6 @@
                                 <i class="material-icons text-danger small text-left">thumb_down</i>
                             </span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title ">DSL</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Country
-                                    </th>
-                                    <th>
-                                        City
-                                    </th>
-                                    <th>
-                                        Salary
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Oud-Turnhout
-                                    </td>
-                                    <td class="text-primary">
-                                        $36,738
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        Minerva Hooper
-                                    </td>
-                                    <td>
-                                        Curaçao
-                                    </td>
-                                    <td>
-                                        Sinaai-Waas
-                                    </td>
-                                    <td class="text-primary">
-                                        $23,789
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        Sage Rodriguez
-                                    </td>
-                                    <td>
-                                        Netherlands
-                                    </td>
-                                    <td>
-                                        Baileux
-                                    </td>
-                                    <td class="text-primary">
-                                        $56,142
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        Philip Chaney
-                                    </td>
-                                    <td>
-                                        Korea, South
-                                    </td>
-                                    <td>
-                                        Overland Park
-                                    </td>
-                                    <td class="text-primary">
-                                        $38,735
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        Doris Greene
-                                    </td>
-                                    <td>
-                                        Malawi
-                                    </td>
-                                    <td>
-                                        Feldkirchen in Kärnten
-                                    </td>
-                                    <td class="text-primary">
-                                        $63,542
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6
-                                    </td>
-                                    <td>
-                                        Mason Porter
-                                    </td>
-                                    <td>
-                                        Chile
-                                    </td>
-                                    <td>
-                                        Gloucester
-                                    </td>
-                                    <td class="text-primary">
-                                        $78,615
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

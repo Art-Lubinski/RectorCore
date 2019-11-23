@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration.CommandLine;
 using RectorCore.Models;
+using RectorCore.ViewModels;
 using RectorLocal;
 
 namespace RectorCore.Areas.Admin.Controllers
@@ -22,34 +23,9 @@ namespace RectorCore.Areas.Admin.Controllers
             ViewData["sidebar"] = "serverlist";
             ViewData["WhereAmI"] = "Server List";
             ViewData["location"] = location;
-            List<Node> nodes = new List<Node>();
-            
-            using (SqlConnection connection = new SqlConnection(Config.connection_string))
-            {
-                connection.Open();
-                using (SqlCommand command =
-                    new SqlCommand("SELECT Name FROM Nodes WHERE Hub='NY222' OR Hub='NY22' OR Hub='NY2' ORDER BY Name", connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    string[] lines = new string[]{};
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            Node node = new Node();
-                            node.Name = reader.GetString(0);
-                            nodes.Add(node);
-                        }
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("No rows found.");
-                    }
-                    reader.Close();
-                }
-            }
-            return View(nodes);
+            NodesViewModel viewModel = new NodesViewModel();
+            viewModel.Select(location);
+            return View(viewModel);
         }
     }
 

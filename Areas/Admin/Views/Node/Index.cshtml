@@ -45,7 +45,7 @@
             <div class="row ">
                 <div class="col-6">
                     <div class="row">
-                        @if (@Model.TVID != "" && @Model.AnydeskID != "")
+                        @if (@Model.TVID != "" || @Model.AnydeskID != "")
                         {
                             <div class="col-6">
                                 <div class="card">
@@ -63,7 +63,7 @@
                                                                 <div class="input-group">
                                                                     <label class="bmd-label-floating">
                                                                         <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIiIGhlaWdodD0iMTIiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM0OThkYiI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
-                                                                        Team-Viewer ID
+                                                                        Team-Viewer
                                                                     </label>
                                                                     <input class="form-control" type="text" id="TVInput1" readonly value="@Model.TVID">
                                                                     <span>
@@ -90,7 +90,7 @@
                                                         <div class="form-group">
                                                             <div class="form-group bmd-form-group">
                                                                 <div class="input-group">
-                                                                    <label class="bmd-label-floating"> <img src="https://img.icons8.com/color/12/000000/anydesk.png"> AnyDesk ID</label>
+                                                                    <label class="bmd-label-floating"> <img src="https://img.icons8.com/color/12/000000/anydesk.png"> AnyDesk</label>
                                                                     <input class="form-control" type="text" id="AnyDeskInput1" readonly value="@Model.AnydeskID">
                                                                     <span>
                                                                         <i onclick="copy('AnyDeskInput1')" class="btn btn-fab btn-fab-mini btn-round">
@@ -121,7 +121,6 @@
 
                             </div>
                         }
-
                         <div class="col-6">
                             <div class="card">
                                 <div class="card-header text-right text-gray">
@@ -132,20 +131,21 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group bmd-form-group">
-                                                    <label class="bmd-label-floating">Provider</label>
-                                                    <input class="form-control" type="text" readonly value="Verizon">
+
+                                                    <label class="bmd-label-floating"> Provider</label>
+                                                    <input class="form-control" type="text" readonly value="@Model.Provider">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Plan</label>
-                                                    <input class="form-control" type="text" readonly value="Shared">
+                                                    <input class="form-control" type="text" readonly value="@Model.Plan">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Account number</label>
-                                                    <input class="form-control" type="text" readonly value="12356745">
+                                                    <input class="form-control" type="text" readonly value="@Model.AccountNumber">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Mobile number</label>
-                                                    <input class="form-control" type="text" readonly value="9177676186">
+                                                    <input class="form-control" type="text" readonly value="@Model.PhoneNumber">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
                                                     <label class="bmd-label-floating">Network Login</label>
@@ -176,10 +176,10 @@
             </div>
         </div>
         <div class="col-md-2">
-            <div class="card">
+            <div class="card card-plain">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-6 right">
+                        <div class="col-12 right">
                             <a class="btn btn-primary btn-sm" asp-area="admin" asp-controller="node" asp-action="Edit" asp-route-location="@Html.ViewData["location"]" asp-route-node="@Model.Name">
                                 <i class="material-icons text-white">edit</i>
                             </a>
@@ -187,12 +187,14 @@
                                 <i class="material-icons text-white">person_add</i>
                             </button>
                         </div>
-                        <div class="col-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-primary  btn-sm">
+                                <i class="material-icons text-white">person_add</i>
+                            </button>
                             <button class="btn btn-primary  btn-sm">
                                 <i class="material-icons text-white">data_usage</i>
-                            </button>
-                            <button class="btn btn-primary btn-sm">
-                                <i class="material-icons text-white">calendar_today</i>
                             </button>
                         </div>
                     </div>
@@ -203,6 +205,42 @@
                     <h5 class="card-title text-md-center small">Hardware</h5>
                 </div>
                 <div class="card-body">
+
+
+                    <div class="row">
+                        @if (Model.Status != null)
+                        {
+                            if (Model.Status == "Active")
+                            {
+                                <div class="col-3 text-right">
+                                    <i class="material-icons text-success">check_circle_outline</i>
+                                </div>
+                                <div class="col-9 text-left small">
+                                    Active
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-3 text-right">
+                                    <i class="material-icons text-rose">error_outline</i>
+                                </div>
+                                <div class="col-9 text-left small">
+                                    Broken
+                                </div>
+                            }
+                        }
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-right">
+                            <i class="material-icons">desktop_windows</i>
+                        </div>
+                        <div class="col-9 text-left small">
+                            @Model.OS
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-3 text-right">
                             <i class="material-icons">router</i>
@@ -249,11 +287,11 @@
                         <div class="col-9 text-left small">
                             @if (Model.IsSSD)
                             {
-                                <span>@Model.Storage SSD</span>
+                                <span>@Model.Storage GB (SSD)</span>
                             }
                             else
                             {
-                                <span>@Model.Storage HDD</span>
+                                <span>@Model.Storage GB (HDD)</span>
                             }
                         </div>
                     </div>
@@ -282,19 +320,6 @@
 
                 </div>
             </div>
-
-            
-
-            @if (TempData["Result"]!= null)
-            {
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <span>@TempData["Result"].ToString()</span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="false">&times;</span>
-                    </button>
-                </div>
-            }
-            
         </div>
     </div>
 </div>
@@ -405,14 +430,4 @@
         /* Copy the text inside the text field */
         document.execCommand("copy");
     }
-</script>
-<script>
-    $(document).ready(function() {
-        $("#success-alert").hide();
-        $("#myWish").click(function showAlert() {
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
-                $("#success-alert").slideUp(500);
-            });
-        });
-    });
 </script>

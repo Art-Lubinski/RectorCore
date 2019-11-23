@@ -24,7 +24,8 @@ namespace RectorCore.Areas.Admin.Controllers
             ViewData["WhereAmI"] = node;
             ViewData["location"] = location;
             NodeInfoViewModel nodeObj = new NodeInfoViewModel();
-            nodeObj.SelectFromDb(node);
+            nodeObj.Name = node;
+            nodeObj.SelectFromDb();
             return View(nodeObj);
         }
 
@@ -42,10 +43,9 @@ namespace RectorCore.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save([Bind("NetworkLogin, NetworkPassword, TVPassword, AnydeskPassword, Status, PhoneNumberID")] NodeInfoEditViewModel model, string node)
+        public IActionResult Save([Bind("TVPassword, AnydeskPassword, Status, PhoneNumberID")] NodeInfoEditViewModel model, string node)
         {
             model.Name = node;
-            Debug.WriteLine($"{node} Name: {model.Name} PhoneID {model.PhoneNumberID} Status {model.Status} AnyDesk {model.AnydeskPassword} TV {model.TVPassword} NL {model.NetworkLogin}");
             if ( 1 == model.Save())
             {
                 TempData["Result"] = "Record succesfully updated";

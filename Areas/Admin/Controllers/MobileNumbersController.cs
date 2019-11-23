@@ -27,7 +27,7 @@ namespace RectorCore.Areas.Admin.Controllers
             {
                 connection.Open();
                 using (SqlCommand command =
-                    new SqlCommand("SELECT MobileNumbers.*, Nodes.Name, MobileAccounts.Provider, MobileAccounts.AccountNumber FROM MobileNumbers LEFT JOIN Nodes ON MobileNumbers.ID = Nodes.PhoneNumberID LEFT JOIN MobileAccounts ON MobileNumbers.AccountID = MobileAccounts.ID ORDER BY provider", connection))
+                    new SqlCommand("SELECT MobileNumbers.*, Nodes.Name, Accounts.Provider, Accounts.AccountNumber FROM MobileNumbers LEFT JOIN Nodes ON MobileNumbers.ID = Nodes.PhoneNumberID LEFT JOIN Accounts ON MobileNumbers.AccountID = Accounts.ID ORDER BY provider", connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
                     string[] lines = new string[] { };
@@ -70,7 +70,7 @@ namespace RectorCore.Areas.Admin.Controllers
             {
                 connection.Open();
                 using (SqlCommand command =
-                    new SqlCommand("SELECT AccountNumber FROM MobileAccounts", connection))
+                    new SqlCommand("SELECT AccountNumber FROM Accounts", connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
@@ -85,7 +85,7 @@ namespace RectorCore.Areas.Admin.Controllers
                         Console.WriteLine("No rows found.");
                     }
                     reader.Close();
-                    command.CommandText = "SELECT DISTINCT(Provider) FROM MobileAccounts";
+                    command.CommandText = "SELECT DISTINCT(Provider) FROM Accounts";
                     reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {

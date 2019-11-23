@@ -31,6 +31,10 @@ namespace RectorCore.ViewModels
         public string Model { get; set; }
         public bool IsSSD { get; set; }
         public string Modem { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Plan { get; set; }
+        public string AccountNumber { get; set; }
+        public string Provider { get; set; }
         public bool NetworkAdapter { get; set; }
         public List<double> ServiceInternet { get; set; }
         public List<double> MainInternet { get; set; }
@@ -43,30 +47,31 @@ namespace RectorCore.ViewModels
         public double TotalUsed { get; set; }
         public char UptimeGrade { get; set; } = 'F';
 
-        public void SelectFromDb(string nameName)
+        public void SelectFromDb()
         {
             using (SqlConnection connection = new SqlConnection(Config.connection_string))
             {
                 connection.Open();
                 using (SqlCommand command =
-                    new SqlCommand($"SELECT * FROM Nodes WHERE Name='{nameName}'", connection))
+                    new SqlCommand($"SELECT * FROM Nodes A LEFT JOIN MobileNumbers B ON A.PhoneNumberID = B.ID LEFT JOIN Accounts C ON B.AccountID = C.ID WHERE Name='{Name}'", connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            Name = DBUtills.SafeGetString(reader, 1);
                             Status = reader.GetValue(reader.GetOrdinal("Status")).ToString();
                             RectorVersion = DBUtills.SafeGetString(reader, 2);
                             AnydeskID = reader.GetValue(reader.GetOrdinal("AnydeskID")).ToString();
-                            AnydeskID = reader.GetValue(reader.GetOrdinal("AnydeskPassword")).ToString();
+                            AnydeskPassword = reader.GetValue(reader.GetOrdinal("AnydeskPassword")).ToString();
                             NetworkLogin = reader.GetValue(reader.GetOrdinal("NetworkLogin")).ToString();
                             NetworkPassword = reader.GetValue(reader.GetOrdinal("NetworkPassword")).ToString();
                             TVID = reader.GetValue(reader.GetOrdinal("TVID")).ToString();
                             TVPassword = reader.GetValue(reader.GetOrdinal("TVPassword")).ToString();
                             Is64bit = Boolean.Parse(reader.GetValue(reader.GetOrdinal("64Bit")).ToString());
                             OS = reader.GetValue(reader.GetOrdinal("OS")).ToString();
+                            if (OS == "Microsoft Windows NT 6.1.7601 Service Pack 1") OS = "Windows 7";
+                            if (OS == "Microsoft Windows NT 6.2.9200.0") OS = "Windows 10";
                             RAM = Double.Parse(reader.GetValue(reader.GetOrdinal("RAM")).ToString());
                             Storage = Double.Parse(reader.GetValue(reader.GetOrdinal("Storage")).ToString());
                             MemoryStick = Boolean.Parse(reader.GetValue(reader.GetOrdinal("MemoryStick")).ToString());
@@ -79,11 +84,14 @@ namespace RectorCore.ViewModels
                             IsSSD = Boolean.Parse(reader.GetValue(reader.GetOrdinal("IsSSD")).ToString());
                             Modem =reader.GetValue(reader.GetOrdinal("Modem")).ToString();
                             NetworkAdapter = Boolean.Parse(reader.GetValue(reader.GetOrdinal("NetworkAdapter")).ToString());
+                            PhoneNumber = reader.GetValue(reader.GetOrdinal("Number")).ToString();
+                            Plan = reader.GetValue(reader.GetOrdinal("Plan")).ToString();
+                            AccountNumber = reader.GetValue(reader.GetOrdinal("AccountNumber")).ToString();
+                            Provider = reader.GetValue(reader.GetOrdinal("Provider")).ToString();
                             GetUptime();
                             GetDataUsage();
                         }
                     }
-
                     reader.Close();
                 }
             }

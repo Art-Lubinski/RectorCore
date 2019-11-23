@@ -47,12 +47,12 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
-                            <form asp-action="Save" asp-controller="Node" asp-route-node="@Model.Name">
+                            <form name="myform" asp-action="Save" asp-controller="Node" asp-route-node="@Model.Name">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <div class="form-group bmd-form-group">
-                                                
+
                                                 <div class="form-group bmd-form-group">
                                                     <label>Status</label>
                                                     <select asp-for="Status" asp-items="@Model.StatusListItems" class="form-control"></select>
@@ -61,26 +61,38 @@
                                                     <label>Phone Number</label>
                                                     <select asp-for="PhoneNumberID" asp-items="@Model.PhoneNumbers" class="form-control"></select>
                                                 </div>
-                                                <div class="form-group bmd-form-group">
-                                                    <label asp-for="NetworkLogin" class="bmd-label-floating">Network Login</label>
-                                                    <input asp-for="NetworkLogin" class="form-control" type="text" value="@Model.NetworkLogin">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <label asp-for="TVPassword" class="bmd-label-floating">
+                                                            <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIiIGhlaWdodD0iMTIiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzM0OThkYiI+PHBhdGggZD0iTTMwLjk2LDEzLjc2Yy05LjQ5NDQsMCAtMTcuMiw3LjcwNTYgLTE3LjIsMTcuMnYxMTAuMDhjMCw5LjQ5NDQgNy43MDU2LDE3LjIgMTcuMiwxNy4yaDExMC4wOGM5LjQ5NDQsMCAxNy4yLC03LjcwNTYgMTcuMiwtMTcuMnYtMTEwLjA4YzAsLTkuNDk0NCAtNy43MDU2LC0xNy4yIC0xNy4yLC0xNy4yek04NiwzMC45NmMzMC40MDk2LDAgNTUuMDQsMjQuNjMwNCA1NS4wNCw1NS4wNGMwLDMwLjQwOTYgLTI0LjYzMDQsNTUuMDQgLTU1LjA0LDU1LjA0Yy0zMC40MDk2LDAgLTU1LjA0LC0yNC42MzA0IC01NS4wNCwtNTUuMDRjMCwtMzAuNDA5NiAyNC42MzA0LC01NS4wNCA1NS4wNCwtNTUuMDR6TTc1LjY4LDY4LjhsLTM0LjQsMTcuMmwzNC40LDE3LjJsLTMuNDQsLTEwLjMyaDI3LjUybC0zLjQ0LDEwLjMybDM0LjQsLTE3LjJsLTM0LjQsLTE3LjJsMy40NCwxMC4zMmgtMjcuNTJ6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4=">
+                                                            Team-Viewer Password
+                                                        </label>
+                                                        <input id="TVPassword" asp-for="TVPassword" class="form-control" type="text" value="@Model.TVPassword">
+                                                        <span class="input-group-btn">
+                                                            <a onClick="generate('TVPassword')" class="btn btn-fab btn-fab-mini btn-round text-white">
+                                                                <i class="material-icons">refresh</i>
+                                                            </a>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group bmd-form-group">
-                                                    <label asp-for="NetworkPassword" class="bmd-label-floating">Password</label>
-                                                    <input asp-for="NetworkPassword" class="form-control" type="text" value="@Model.NetworkPassword">
-                                                </div>
-                                                <div class="form-group bmd-form-group">
-                                                    <label asp-for="TVPassword" class="bmd-label-floating">Team-Viewer pwd</label>
-                                                    <input asp-for="TVPassword" class="form-control" type="text" value="@Model.TVPassword">
-                                                </div>
-                                                <div class="form-group bmd-form-group">
-                                                    <label asp-for="AnydeskPassword" class="bmd-label-floating">AnyDesk pwd</label>
-                                                    <input asp-for="AnydeskPassword" class="form-control" type="text" value="@Model.AnydeskPassword">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <label asp-for="AnydeskPassword" class="bmd-label-floating"> <img src="https://img.icons8.com/color/12/000000/anydesk.png"> AnyDesk Password</label>
+                                                        <input id="AnyDeskPassword" asp-for="AnydeskPassword" class="form-control" type="text" value="@Model.AnydeskPassword">
+                                                        <span class="input-group-btn">
+                                                            <a onClick="generate('AnyDeskPassword')" class="btn btn-fab btn-fab-mini btn-round text-white">
+                                                                <i class="material-icons">refresh</i>
+                                                            </a>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <button class="btn btn-danger btn-sm pull-left">
+                                    <i class="material-icons text-white">delete</i>
+                                </button>
                                 <button type="submit" class="btn btn-primary pull-right">Update</button>
                                 <div class="clearfix"></div>
                             </form>
@@ -91,3 +103,18 @@
         </div>
     </div>
 </div>
+<script>
+    function randomPassword(length) {
+        var chars = "abcdefghkmnpqrstuvwxyzABCDEFGHKLMNP23456789.&#!";
+        var pass = "";
+        for (var x = 0; x < length; x++) {
+            var i = Math.floor(Math.random() * chars.length);
+            pass += chars.charAt(i);
+        }
+        return pass;
+    }
+
+    function generate(id) {
+        document.getElementById(id).value = randomPassword(10);
+    }
+</script>
